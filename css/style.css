@@ -147,6 +147,10 @@ main h3 {
   margin: 2rem 0 0.5rem;
 }
 
+.content-width {
+  max-width: 40em;
+}
+
 p.lede {
   color: var(--black);
   font-weight: 400;
