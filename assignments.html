@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignments — Data Visualization for Architecture, Urbanism, and the Humanities — Fall 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1 class="site-title"><a href="index.html">Data Visualization for Architecture, Urbanism, and the Humanities — Fall 2026</a></h1>
+      <nav>
+        <a href="index.html">Introduction</a>
+        <a href="schedule.html">Schedule</a>
+        <a href="assignments.html" class="active">Assignments</a>
+        <a href="references.html">References</a>
+        <a href="policies.html">Policies &amp; Grading</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>Assignments</h1>
+
+    <p class="meta">*Starred assignments may be completed with project group if applicable.</p>
+
+    <div class="accordion">
+      <details class="accordion-item">
+        <summary>
+          <span class="accordion-title">Found visualizations part 1</span>
+          <span class="meta">Due September 17th, 2026</span>
+        </summary>
+        <p>TBD</p>
+      </details>
+      <details class="accordion-item">
+        <summary>
+          <span class="accordion-title">Found visualizations part 2</span>
+          <span class="meta">Due September 24th, 2026</span>
+        </summary>
+        <p>TBD</p>
+      </details>
+      <details class="accordion-item">
+        <summary>
+          <span class="accordion-title">GitHub Pages</span>
+          <span class="meta">Due September 24th, 2026</span>
+        </summary>
+        <p><strong>Assignment: Create and Publish Your First GitHub Pages Website</strong></p>
+
+        <p><strong>Time estimate:</strong> 1&ndash;2 hours</p>
+
+        <p><strong>Goal:</strong> create a GitHub repository, put a simple website into it, and publish that website using GitHub Pages.</p>
+
+        <p>By the end, you will have:</p>
+        <ul>
+          <li>A GitHub account</li>
+          <li>First GitHub repository</li>
+          <li>A local copy of that repository on your computer</li>
+          <li>An index.html webpage</li>
+          <li>Your first Git commit</li>
+          <li>Your first GitHub push</li>
+          <li>A publicly accessible website</li>
+        </ul>
+
+        <p>Your final website will have a URL like:<br><code>https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/</code></p>
+
+        <p><strong>Part 1: Create a GitHub account</strong></p>
+        <p>If you do not already have one, create a GitHub account at <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>. Your GitHub username will become part of the URL for your website.</p>
+
+        <p><strong>Part 2: Install Git</strong></p>
+        <p>You will use Git from the Terminal to manage and publish your files. Open Terminal and type:</p>
+        <p><code>git --version</code></p>
+        <p>If Git is installed, you should see something similar to:</p>
+        <p><code>git version 2.x.x</code></p>
+        <p>If you are using a Mac, Git may already be installed. If you are using Windows, download Git from <a href="https://git-scm.com" target="_blank" rel="noopener">Git SCM</a>.</p>
+
+        <p><strong>Part 3: Configure Git</strong></p>
+        <p>In Terminal, enter:</p>
+        <p><code>git config --global user.name "Your Name"</code></p>
+        <p>Then:</p>
+        <p><code>git config --global user.email "your-email@example.com"</code></p>
+        <p>Use the email associated with your GitHub account. You can check your settings with:</p>
+        <p><code>git config --global --list</code></p>
+
+        <p><strong>Part 3: Create a Personal Access Token</strong></p>
+        <p>When you use Git from the Terminal to communicate with GitHub over HTTPS, GitHub does not use your normal account password. For this assignment, you will create a fine-grained Personal Access Token (PAT). A token acts as a credential that allows Git to communicate with your GitHub account.</p>
+        <p><strong>Security warning</strong><br>Treat your token like a password. Never:</p>
+        <ul>
+          <li>Put it in an HTML file</li>
+          <li>Put it in JavaScript</li>
+          <li>Upload it to GitHub</li>
+          <li>Email it to someone</li>
+          <li>Post it in Slack or Discord</li>
+          <li>Include it in a screenshot</li>
+        </ul>
+        <p>Go to your GitHub settings and find:<br>Settings &rarr; Developer settings &rarr; Personal access tokens &rarr; Fine-grained tokens</p>
+        <p>Choose: Generate new token</p>
+        <p>Give the token a name such as: <code>class-github</code></p>
+        <p>Set an expiration date, give the token permission to read and write repository contents. Then generate the token.</p>
+        <p><strong>Important:</strong> GitHub will only show you the token when it is generated. Copy it temporarily to a secure place. You will use it when Git asks for your password. When Git asks <code>Username:</code> enter your GitHub username. When it asks <code>Password:</code> paste your Personal Access Token.</p>
+
+        <p><strong>Part 4: Create your repository on GitHub</strong></p>
+        <p>Go to GitHub. Click: New repository. Give your repository a simple name (YOUR-REPO-NAME below) that is descriptive of your project, it will appear in the second part of your URL: <code>YOUR-USERNAME.github.io/YOUR-REPO-NAME</code>. Set the repository to: Public. Then click: Create repository.</p>
+
+        <p><strong>Part 6: Create local folder and add your name</strong></p>
+        <p>Download the index.html provided and place it in a folder on your computer. The folder will be your repo.</p>
+
+        <p><strong>Part 7: Connect to GitHub</strong></p>
+
+        <p><strong>7A. Open Terminal in your website folder</strong></p>
+        <p>First, find the folder containing your website files. For example, if your website is in your Documents folder:</p>
+        <p><code>cd ~/Documents/my-first-website</code></p>
+        <p>You can check that you are in the correct folder with:</p>
+        <p><code>ls</code></p>
+        <p>You should see your website files. For example: <code>index.html</code></p>
+
+        <p><strong>7B. Turn the folder into a Git repository</strong></p>
+        <p>Run:</p>
+        <p><code>git init</code></p>
+        <p>You should see something like: <code>Initialized empty Git repository...</code> You have now turned your existing website folder into a Git repository.</p>
+
+        <p><strong>7C. Connect your folder to GitHub</strong></p>
+        <p>Now you need to tell your local Git repository where its online GitHub repository is located. On GitHub, open the repository you created earlier and follow the steps listed there or the steps below. These steps will connect your local folder to the repo online and allow you to push whatever code you write to it. Back in Terminal, run:</p>
+        <p><code>git remote add origin https://github.com/YOUR-USERNAME/my-first-website.git</code></p>
+        <p>For example:</p>
+        <p><code>git remote add origin https://github.com/janedoe/my-first-website.git</code></p>
+
+        <p><strong>7D. Add your files</strong></p>
+        <p>Tell Git to track the files in your website:</p>
+        <p><code>git add .</code></p>
+        <p>Then check:</p>
+        <p><code>git status</code></p>
+        <p>You should see your website files listed as files ready to be committed.</p>
+
+        <p><strong>7E. Make your first commit</strong></p>
+        <p>Create your first commit:</p>
+        <p><code>git commit -m "Create first website"</code></p>
+        <p>A commit is a saved snapshot of your project.</p>
+
+        <p><strong>7F. Connect your main branch</strong></p>
+        <p>Your GitHub repository uses a branch called main. To make sure your local branch is also called main, run:</p>
+        <p><code>git branch -M main</code></p>
+
+        <p><strong>7G. Push your website to GitHub</strong></p>
+        <p>Now send your website files to GitHub:</p>
+        <p><code>git push -u origin main</code></p>
+        <p>The origin tells Git which remote repository to push to. The main tells Git which branch to push. The -u tells Git to remember this connection so that future pushes can simply use:</p>
+        <p><code>git push</code></p>
+        <p>If Git asks for your credentials, enter your GitHub username and use your Personal Access Token as the password.</p>
+
+        <p><strong>7H. Check GitHub</strong></p>
+        <p>Go back to your repository on GitHub and refresh the page. You should now see your website files in the repository. For example:</p>
+        <p><code>my-first-website<br>&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#9472;index.html<br>&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#9472;style.css<br>&nbsp;&nbsp;&nbsp;&nbsp;&#9492;&#9472;&#9472;images/</code></p>
+        <p>Your existing website is now stored on GitHub.</p>
+
+        <p><strong>Part 8: Turn on GitHub Pages</strong></p>
+        <p>Now we will turn the repository into a website. On your GitHub repository, click: Settings. Then: Pages. Under: Build and deployment. Choose: Source: Deploy from a branch. Then select: Branch: main. And: Folder: / (root). Click: Save. GitHub will now build your website from the files in your repository.</p>
+
+        <p><strong>Part 9: Find your website and submit</strong></p>
+        <p>Your website will be located at:<br><code>https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/</code></p>
+        <p>Notice the difference:</p>
+        <ul>
+          <li>The first is where your code and files live &mdash; GitHub repository: <code>https://github.com/janedoe/my-first-website</code></li>
+          <li>The second is where your website lives &mdash; GitHub Pages website: <code>https://janedoe.github.io/my-first-website/</code></li>
+        </ul>
+        <p>It can take several minutes for the site to become available. Submit to Courseworks your published website only.</p>
+
+        <p><strong>For your reference</strong></p>
+        <p><strong>Git</strong> &mdash; Software on your computer that tracks changes to your files.</p>
+        <p><strong>GitHub</strong> &mdash; An online service where your Git repositories can be stored and shared.</p>
+        <p><strong>Repository</strong> &mdash; A project folder managed by Git. Your repository contains your HTML, CSS, JavaScript, images, and other project files.</p>
+        <p><strong>GitHub Pages</strong> &mdash; A service that publishes static files from a GitHub repository as a website.</p>
+      </details>
+      <details class="accordion-item">
+        <summary>
+          <span class="accordion-title">Replication</span>
+          <span class="meta">Due October 1st, 2026</span>
+        </summary>
+        <p>TBD</p>
+      </details>
+      <details class="accordion-item">
+        <summary>
+          <span class="accordion-title">Data discovery part 1</span>
+          <span class="meta">Due October 8th, 2026</span>
+        </summary>
+        <p>TBD</p>
+      </details>
+      <details class="accordion-item">
+        <summary>
+          <span class="accordion-title">Data discovery part 2</span>
+          <span class="meta">Due October 15th, 2026</span>
+        </summary>
+        <p>TBD</p>
+      </details>
+      <details class="accordion-item">
+        <summary>
+          <span class="accordion-title">Pitch presentations*</span>
+          <span class="meta">Due October 22nd, 2026</span>
+        </summary>
+        <p><strong>Due:</strong> October 22nd, 2026<br><strong>Assigned:</strong> October 16th, 2026</p>
+        <p><strong>Goal:</strong> Present early project ideas and research to class for discussion.</p>
+        <p><strong>Deliverable:</strong> Slide presentation or document submitted to Courseworks on Thursday. Pitches will be presented in class.</p>
+        <p><strong>Order</strong></p>
+        <p>I will generate a random order and open all your presentations on the classroom computer before class in that order.</p>
+        <p><strong>Content</strong></p>
+        <p>Please consider including some elements of each of these:</p>
+        <ul>
+          <li>Project name and group/author name(s)</li>
+          <li>Motivation and approach, the origins of your idea</li>
+          <li>References and similar project</li>
+          <li>Investigation of the data and summary of its contents</li>
+          <li>The story you want to tell with the data</li>
+          <li>Preliminary storyboards and sketches, can be done by hand</li>
+          <li>Your biggest anticipated challenge. What is the hardest part of your project</li>
+          <li>Next steps for completing project</li>
+          <li>Any specific advice or feedback you are seeking from the class</li>
+        </ul>
+        <p><strong>Time limit</strong></p>
+        <p>Presentations are up to 10 minutes long followed by 5 minutes of feedback.</p>
+      </details>
+      <details class="accordion-item">
+        <summary>
+          <span class="accordion-title">Final project data*</span>
+          <span class="meta">Due October 29th, 2026</span>
+        </summary>
+        <p>TBD</p>
+      </details>
+      <details class="accordion-item">
+        <summary>
+          <span class="accordion-title">Final project prototype 1*</span>
+          <span class="meta">Due November 5th, 2026</span>
+        </summary>
+        <p><strong>Due:</strong> November 5th, 2026<br><strong>Assigned:</strong> October 23rd, 2026</p>
+        <p><strong>Submission:</strong> URL to Courseworks</p>
+        <p><strong>Deliverable:</strong> Working prototype published online (can be private requiring password).</p>
+        <p>Prototype requirements:</p>
+        <ul>
+          <li>Cohesive narrative with introduction</li>
+          <li>Real data</li>
+          <li>Real copy and text</li>
+          <li>Working buttons, filters, interactivity</li>
+        </ul>
+        <p>Optional for prototype, required for final:</p>
+        <ul>
+          <li>Style</li>
+          <li>Font</li>
+          <li>Color</li>
+          <li>Identity</li>
+          <li>Visual design that are not integral to interaction</li>
+          <li>Design accommodations for mobile</li>
+          <li>Accessibility testing</li>
+        </ul>
+      </details>
+      <details class="accordion-item">
+        <summary>
+          <span class="accordion-title">Preparing your work for peer user test*</span>
+          <span class="meta">Due November 5th, 2026</span>
+        </summary>
+        <p><strong>Assigned:</strong> October 30th, 2026<br><strong>Due:</strong> November 5th, 2026</p>
+        <p><strong>Goal:</strong> Prepare your project for user testing.</p>
+        <p><strong>Submission:</strong> Each project group will submit a document to Courseworks, email document cc&rsquo;ing instructor to each of your tester(s).</p>
+        <p><strong>Deliverable:</strong> A document containing:</p>
+        <ul>
+          <li>The project as a public URL to be viewed on the tester&rsquo;s own device.</li>
+          <li>Names and emails of all authors.</li>
+          <li>A short description of not more than 1&ndash;2 sentences of its purpose.</li>
+          <li>
+            Provide 2&ndash;4 informational questions or tasks that the user should be able to complete after/while viewing your project. These questions or prompts should cover the most important points you want to make with your project to ensure they are getting through to your audience. Tasks should be things that a normal audience member might reasonably want to do.
+            <p>For example:</p>
+            <ul>
+              <li>&ldquo;Find the place/person/pet/tree/date/car with the highest and lowest value.&rdquo;</li>
+              <li>&ldquo;What are the outliers to what I am showing.&rdquo;</li>
+              <li>&ldquo;What are the clearest patterns.&rdquo;</li>
+              <li>&ldquo;What are some opposing views to what I am demonstrating? And how have I addressed them?&rdquo;</li>
+              <li>&ldquo;Figure out what chart 1 is showing.&rdquo;</li>
+              <li>&ldquo;Find the answer to this question using the visualization.&rdquo;</li>
+            </ul>
+          </li>
+        </ul>
+      </details>
+      <details class="accordion-item">
+        <summary>
+          <span class="accordion-title">Peer user test</span>
+          <span class="meta">Due November 12th, 2026</span>
+        </summary>
+        <p><strong>Assigned:</strong> November 6th, 2026<br><strong>Due:</strong> November 12th, 2026</p>
+        <p><strong>Goal:</strong> User-test a classmate&rsquo;s project. Provide useful evidence about how a real person interacts with it and concrete feedback on potential improvements.</p>
+        <p><strong>Submission:</strong> Each person (not project group) will submit an independent document to Courseworks, email the same document cc&rsquo;ing instructor to the creator(s) of the project tested.</p>
+        <p><strong>Deliverable:</strong> An individually completed user testing report document.</p>
+
+        <p><strong>1. Answer these questions in your document</strong></p>
+
+        <p>Understanding</p>
+        <ul>
+          <li>What do you think this project is about?</li>
+          <li>What do you think you were supposed to do?</li>
+          <li>Was anything confusing or unclear?</li>
+        </ul>
+
+        <p>Interaction</p>
+        <ul>
+          <li>Was there anything you expected to be able to do that you couldn&rsquo;t?</li>
+          <li>Was there anything that behaved differently from what you expected?</li>
+          <li>Which part was easiest to use?</li>
+          <li>Which part was hardest to use?</li>
+        </ul>
+
+        <p>Interpretation</p>
+        <ul>
+          <li>Was there anything you weren&rsquo;t sure how to interpret?</li>
+          <li>What do you think the most important thing this project is showing is?</li>
+        </ul>
+
+        <p>Improvement</p>
+        <ul>
+          <li>If you could change one thing, what would you change?</li>
+        </ul>
+
+        <p><strong>2. Tasks completed and evaluation</strong></p>
+        <p>List the tasks you were asked to complete. For each task, describe what happened. Include specific examples of:</p>
+        <ul>
+          <li>successful interactions</li>
+          <li>confusion</li>
+          <li>unexpected behavior</li>
+          <li>hesitation</li>
+          <li>mistakes</li>
+          <li>moments of discovery</li>
+        </ul>
+
+        <p><strong>3. Three things that worked</strong></p>
+        <p>Identify three things that worked particularly well. For each one, explain what you observed that makes you think it worked.</p>
+        <p>Example: &ldquo;The search box was easy to understand. I immediately recognized it as a search field and was able to find the information without asking for help.&rdquo;</p>
+
+        <p><strong>4. Problems or points of confusion</strong></p>
+        <p>Identify three things that could be improved. For each one, explain:</p>
+        <ul>
+          <li>What happened</li>
+          <li>Why you think it was confusing</li>
+          <li>What you expected instead</li>
+        </ul>
+        <p>Example: &ldquo;The map legend was difficult to interpret. I wasn&rsquo;t sure whether the colors represented population size or percentage. I expected the legend to include a more explicit description of the metric.&rdquo;</p>
+
+        <p><strong>5. Most important finding</strong></p>
+        <p>What was the single most important thing you learned from testing this project?</p>
+
+        <p><strong>6. Actionable recommendation</strong></p>
+        <p>Give the creator one specific actionable recommendation for improving the project. Instead of: &ldquo;Make it easier to use.&rdquo; Try: &ldquo;Add a label above the dropdown explaining that it filters the map by state.&rdquo;</p>
+      </details>
+      <details class="accordion-item">
+        <summary>
+          <span class="accordion-title">Final project*</span>
+          <span class="meta">Due December 3rd, 2026</span>
+        </summary>
+        <p>TBD</p>
+      </details>
+    </div>
+  </main>
+
+  <footer>
+    Data Visualization for Architecture, Urbanism, and the Humanities &middot; Updated Sep 2026
+  </footer>
+</body>
+</html>
