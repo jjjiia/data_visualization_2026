@@ -45,6 +45,24 @@ code {
   border-radius: 2px;
 }
 
+pre.code-block {
+  display: block;
+  font-family: var(--sans);
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 2px;
+  padding: 0.85rem 1rem;
+  margin: 0.6rem 0 1.25rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  max-width: 40em;
+}
+
+.accordion-item pre.code-block {
+  margin-left: 1.8rem;
+}
+
 header {
   position: sticky;
   top: 0;
@@ -266,16 +284,19 @@ tr:last-child td {
   margin-bottom: 0.4rem;
 }
 
-.references-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+.accordion-item .card-list {
+  margin: 0.5rem 0 0;
+  padding-left: 0;
+  max-width: none;
 }
 
-@media (max-width: 640px) {
-  .references-columns {
-    grid-template-columns: 1fr;
-  }
+.accordion-item .card-list li {
+  margin-bottom: 0;
+}
+
+.accordion-item table {
+  margin: 0.5rem 0 1.25rem;
+  max-width: 40em;
 }
 
 .card {
@@ -345,6 +366,159 @@ tr:last-child td {
 
 .quick-links a:hover {
   background: var(--accent);
+}
+
+.robot-intro {
+  margin-bottom: 2.5rem;
+}
+
+.robot-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2.5rem;
+  border-top: 1px solid var(--line);
+  padding-top: 2rem;
+}
+
+@media (max-width: 640px) {
+  .robot-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.robot-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.robot-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  margin-bottom: 0.7rem;
+}
+
+.robot-checklist .box {
+  flex: none;
+  width: 0.9rem;
+  height: 0.9rem;
+  margin-top: 0.2rem;
+  border: 1px solid var(--black);
+}
+
+.robot-checklist li.done .box {
+  background: var(--accent);
+  border-color: var(--black);
+}
+
+.robot-preview {
+  font-size: 1.6rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.25rem;
+}
+
+.robot-buttons button {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  background: var(--white);
+  color: var(--black);
+  border: 1px solid var(--black);
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: background 0.15s;
+}
+
+.robot-buttons button:hover {
+  background: var(--accent);
+}
+
+.robot-log {
+  border: 1px solid var(--black);
+  background: var(--white);
+  height: 420px;
+  overflow-y: auto;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.robot-log .line {
+  margin-bottom: 0.65rem;
+  max-width: 46em;
+}
+
+.robot-log .who {
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-right: 0.4rem;
+}
+
+.robot-win {
+  display: none;
+  border: 1px solid var(--black);
+  background: var(--accent);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.robot-win.show {
+  display: block;
+}
+
+.robot-form {
+  display: flex;
+  gap: 0.6rem;
+  border: 1px solid var(--black);
+  padding: 0.7rem;
+}
+
+.robot-form .prompt {
+  font-weight: 700;
+  align-self: center;
+}
+
+.robot-form input[type="text"] {
+  flex: 1;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  border: 1px solid var(--black);
+  padding: 0.5rem 0.7rem;
+  background: var(--white);
+  color: var(--black);
+}
+
+.robot-form input[type="text"]:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.robot-form button {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  background: var(--black);
+  color: var(--white);
+  border: 1px solid var(--black);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.robot-form button:hover {
+  background: var(--accent);
+  color: var(--black);
 }
 
 footer {

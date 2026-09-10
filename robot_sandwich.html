@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robot Sandwich — Data Visualization for Architecture, Urbanism, and the Humanities — Fall 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1 class="site-title"><a href="index.html">Data Visualization for Architecture, Urbanism, and the Humanities — Fall 2026</a></h1>
+      <nav>
+        <a href="index.html">Introduction</a>
+        <a href="schedule.html">Schedule</a>
+        <a href="assignments.html">Assignments</a>
+        <a href="references.html">References</a>
+        <a href="policies.html">Policies &amp; Grading</a>
+        <a href="robot_sandwich.html" class="active">Robot Sandwich</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>Robot Sandwich</h1>
+    <p class="lede robot-intro">The robot will do <strong>exactly</strong> what you type &mdash; nothing more, nothing less, and nothing you didn&rsquo;t explicitly say. Type one instruction at a time and press Enter. Your goal: get the robot to make a peanut butter sandwich. This is the same lesson behind every program you&rsquo;ll write this semester &mdash; computers need precise, literal, step-by-step instructions.</p>
+
+    <div class="robot-layout">
+      <aside>
+        <h2 class="section-heading">Progress</h2>
+        <ul class="robot-checklist" id="checklist">
+          <li data-step="openBag"><span class="box"></span><span>Open the packaging</span></li>
+          <li data-step="takeSlices"><span class="box"></span><span>Remove two slices of bread</span></li>
+          <li data-step="openJar"><span class="box"></span><span>Open the peanut butter</span></li>
+          <li data-step="loadKnife"><span class="box"></span><span>Get peanut butter onto the knife</span></li>
+          <li data-step="spread"><span class="box"></span><span>Spread it on the bread</span></li>
+          <li data-step="combine"><span class="box"></span><span>Put the slices together</span></li>
+        </ul>
+        <div class="robot-preview" id="preview">🥫 🍞🍞</div>
+        <div class="robot-buttons">
+          <button id="hintBtn" type="button">Hint</button>
+          <button id="resetBtn" type="button">Reset</button>
+        </div>
+      </aside>
+
+      <div>
+        <div class="robot-log" id="log"></div>
+        <div class="robot-win" id="winBanner"></div>
+        <form class="robot-form" id="cmdForm">
+          <span class="prompt">&gt;</span>
+          <input type="text" id="cmdInput" autocomplete="off" placeholder="Type an instruction for the robot&hellip;" autofocus>
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    Data Visualization for Architecture, Urbanism, and the Humanities &middot; Updated Sep 2026
+  </footer>
+
+<script>
+(function () {
+  var log = document.getElementById("log");
+  var form = document.getElementById("cmdForm");
+  var input = document.getElementById("cmdInput");
+  var checklist = document.getElementById("checklist");
+  var preview = document.getElementById("preview");
+  var winBanner = document.getElementById("winBanner");
+  var hintBtn = document.getElementById("hintBtn");
+  var resetBtn = document.getElementById("resetBtn");
+
+  var steps = [
+    {
+      id: "openBag",
+      match: function (s) { return /open/.test(s) && /bag/.test(s); },
+      success: "The robot unties the twist tie and opens the bread bag.",
+      hint: "How does the robot get bread out of a closed bag?",
+      needCount: 1
+    },
+    {
+      id: "takeSlices",
+      match: function (s) {
+        return /(take|remove|grab|pull)/.test(s) && /(slice|bread)/.test(s) && !/bag/.test(s);
+      },
+      success: [
+        "The robot removes one slice of bread and sets it on the counter.",
+        "The robot removes a second slice of bread. Two slices are ready."
+      ],
+      hint: "A sandwich needs two slices of bread. Have you asked for both?",
+      needCount: 2
+    },
+    {
+      id: "openJar",
+      match: function (s) { return /open/.test(s) && /(jar|peanut butter)/.test(s); },
+      success: "The robot twists off the lid of the peanut butter jar.",
+      hint: "The peanut butter is sealed in a jar.",
+      needCount: 1
+    },
+    {
+      id: "loadKnife",
+      match: function (s) {
+        return /knife/.test(s) && /(jar|scoop|dip|peanut butter)/.test(s);
+      },
+      success: "The robot dips the knife into the jar and lifts out a scoop of peanut butter.",
+      hint: "The peanut butter needs to get from the jar onto a tool before it can go anywhere else.",
+      needCount: 1
+    },
+    {
+      id: "spread",
+      match: function (s) {
+        return /spread/.test(s) && /(bread|slice)/.test(s);
+      },
+      success: "The robot spreads the peanut butter evenly across the slice of bread.",
+      hint: "The knife is loaded. Now what should happen to the bread?",
+      needCount: 1
+    },
+    {
+      id: "combine",
+      match: function (s) {
+        return /(put|place|top|stack|close)/.test(s) && /(slice|bread|top|sandwich)/.test(s);
+      },
+      success: "The robot places the second slice on top. A peanut butter sandwich sits on the counter.",
+      hint: "You have one spread slice and one plain slice. What goes together?",
+      needCount: 1
+    }
+  ];
+
+  var state = { index: 0, progress: {} };
+
+  var outOfOrderLines = {
+    loadKnife: "The robot dips the knife into a sealed jar. Nothing comes out. The jar is still closed.",
+    spread: "The robot drags a bare knife across the bread. There is no peanut butter on it yet.",
+    combine: "The robot sets a plain slice of bread down. There is no spread sandwich to close yet.",
+    openJar: "The robot tries, but there's no jar in reach until earlier steps are done.",
+    takeSlices: "The bread bag is still closed. Nothing comes out.",
+    openBag: "There's nothing to open yet."
+  };
+
+  var confusedLines = [
+    "SYNTAX ERROR: I do not understand that instruction.",
+    "I only do exactly what you tell me — and I don't recognize that.",
+    "ERROR 404: action not found in my instruction set.",
+    "I am a robot. I require one precise, literal instruction at a time.",
+    "Unrecognized command. I will not guess what you meant."
+  ];
+
+  function addLine(who, text, cls) {
+    var div = document.createElement("div");
+    div.className = "line " + cls;
+    var whoSpan = document.createElement("span");
+    whoSpan.className = "who";
+    whoSpan.textContent = who + ":";
+    div.appendChild(whoSpan);
+    div.appendChild(document.createTextNode(text));
+    log.appendChild(div);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function updateChecklist() {
+    steps.forEach(function (step) {
+      var li = checklist.querySelector('[data-step="' + step.id + '"]');
+      var count = state.progress[step.id] || 0;
+      if (count >= step.needCount) {
+        li.classList.add("done");
+      } else {
+        li.classList.remove("done");
+      }
+    });
+  }
+
+  function updatePreview() {
+    var p = state.progress;
+    var jarOpen = (p.openJar || 0) >= 1;
+    var knifeLoaded = (p.loadKnife || 0) >= 1;
+    var spread = (p.spread || 0) >= 1;
+    var combined = (p.combine || 0) >= 1;
+
+    if (combined) {
+      preview.textContent = "🥪";
+    } else if (spread) {
+      preview.textContent = "🧈 🍞";
+    } else if (knifeLoaded) {
+      preview.textContent = "🔪🧈 🍞🍞";
+    } else if (jarOpen) {
+      preview.textContent = "🥫 🍞🍞";
+    } else {
+      preview.textContent = "🥫 🍞🍞";
+    }
+  }
+
+  function currentStep() {
+    return steps[state.index];
+  }
+
+  function handleCommand(raw) {
+    var s = raw.toLowerCase().trim();
+    if (!s) return;
+
+    addLine("You", raw, "user");
+
+    if (/make.*sandwich|make.*me.*a.*sandwich/.test(s)) {
+      addLine("Robot", "That is not a single instruction — that is the whole goal. Break it into one exact physical action at a time.", "bot");
+      return;
+    }
+
+    var step = currentStep();
+
+    if (step && step.match(s)) {
+      state.progress[step.id] = (state.progress[step.id] || 0) + 1;
+      var count = state.progress[step.id];
+      var msg = Array.isArray(step.success) ? step.success[Math.min(count, step.success.length) - 1] : step.success;
+      addLine("Robot", msg, "bot");
+
+      if (count >= step.needCount) {
+        state.index++;
+        updateChecklist();
+        updatePreview();
+        if (state.index >= steps.length) {
+          finish();
+        }
+      }
+      return;
+    }
+
+    for (var i = state.index + 1; i < steps.length; i++) {
+      if (steps[i].match(s)) {
+        addLine("Robot", outOfOrderLines[steps[i].id] || "You can't do that yet.", "bot");
+        return;
+      }
+    }
+
+    var line = confusedLines[Math.floor(Math.random() * confusedLines.length)];
+    addLine("Robot", line, "bot");
+  }
+
+  function finish() {
+    winBanner.classList.add("show");
+    winBanner.innerHTML = "<strong>Sandwich complete.</strong> Notice how many exact steps it took &mdash; and how the robot did something wrong or nothing at all every time an instruction was vague or out of order. That's exactly what a computer does with your code: no assumptions, no common sense, just precise instructions executed in order. Type <em>reset</em> or click Reset to try phrasing it differently.";
+  }
+
+  function reset() {
+    state = { index: 0, progress: {} };
+    log.innerHTML = "";
+    winBanner.classList.remove("show");
+    winBanner.innerHTML = "";
+    updateChecklist();
+    updatePreview();
+    addLine("Robot", "Ready. Give me one instruction at a time.", "system");
+    input.value = "";
+    input.focus();
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var val = input.value;
+    if (val.trim().toLowerCase() === "reset") {
+      reset();
+      return;
+    }
+    handleCommand(val);
+    input.value = "";
+    input.focus();
+  });
+
+  hintBtn.addEventListener("click", function () {
+    var step = currentStep();
+    if (!step) {
+      addLine("Robot", "There is nothing left to do. The sandwich is finished.", "system");
+      return;
+    }
+    addLine("Hint", step.hint, "system");
+  });
+
+  resetBtn.addEventListener("click", reset);
+
+  reset();
+})();
+</script>
+</body>
+</html>

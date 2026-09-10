@@ -19,6 +19,7 @@
         <a href="assignments.html" class="active">Assignments</a>
         <a href="references.html">References</a>
         <a href="policies.html">Policies &amp; Grading</a>
+        <a href="robot_sandwich.html">Robot Sandwich</a>
       </nav>
     </div>
   </header>
@@ -31,8 +32,41 @@
     <div class="accordion">
       <details class="accordion-item">
         <summary>
-          <span class="accordion-title">Found visualizations part 1</span>
-          <span class="meta">Due September 17th, 2026</span>
+          <span class="accordion-title">Workflow setup (in class)</span>
+          <span class="meta">September 11th, 2026</span>
+        </summary>
+        <p><strong>Set up Visual Studio Code and Live Server</strong></p>
+        <p>In this tutorial, you will install Visual Studio Code, add the Live Server extension, and use it to preview an HTML file in your browser.</p>
+
+        <p><strong>Submission:</strong> Upload screenshot to Courseworks.</p>
+
+        <p><strong>1. Download Visual Studio Code</strong></p>
+        <p>Go to <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a>. Download the version for your computer (Mac or Windows) and install it. Open Visual Studio Code after installation.</p>
+
+        <p><strong>2. Install Live Server</strong></p>
+        <p>In Visual Studio Code, click the Extensions icon on the left side of the window. Search for <code>Live Server</code>. Find the extension named Live Server by Ritwick Dey and click Install.</p>
+
+        <p><strong>3. Download the class file</strong></p>
+        <p>Download the file provided below and save it somewhere easy to find, such as your Documents or Desktop.</p>
+        <p>File url: <a href="https://github.com/jjjiia/data_visualization_course/blob/main/maze_to_tree.html" target="_blank" rel="noopener">https://github.com/jjjiia/data_visualization_course/blob/main/maze_to_tree.html</a></p>
+
+        <p><strong>4. Open the file in Visual Studio Code</strong></p>
+        <p>In Visual Studio Code: File &rarr; Open File. Select the HTML file you downloaded. You should now see the HTML code in the editor.</p>
+
+        <p><strong>5. Start Live Server</strong></p>
+        <p>Right-click anywhere in the HTML code and select Open with Live Server. Your web browser should open automatically. You should now see the HTML file displayed as a webpage. The address will look something like:</p>
+        <p><code>http://127.0.0.1:5500/filename.html</code></p>
+
+        <p><strong>6. Test it</strong></p>
+        <p>Make a small change to the HTML file&mdash;for example, change some text. Save the file: Command + S on Mac, Ctrl + S on Windows. Return to your browser. The page should automatically update. If it does, Visual Studio Code and Live Server are working correctly.</p>
+
+        <p><strong>You&rsquo;re ready!</strong></p>
+        <p>You will use this setup throughout the course to write, edit, and test HTML, CSS, JavaScript, and data visualizations.</p>
+      </details>
+      <details class="accordion-item">
+        <summary>
+          <span class="accordion-title">Found visualizations</span>
+          <span class="meta">Sign up by September 17th, 2026</span>
         </summary>
         <p><strong>Sign up by:</strong> September 17th, 2026</p>
         <p><strong>Goal:</strong> Share a data visualization that you found out in the wild.</p>
@@ -111,7 +145,7 @@
       <details class="accordion-item">
         <summary>
           <span class="accordion-title">GitHub Pages</span>
-          <span class="meta">Due September 24th, 2026</span>
+          <span class="meta">Due September 17th, 2026</span>
         </summary>
         <p><strong>Assignment: Create and Publish Your First GitHub Pages Website</strong></p>
 
@@ -243,6 +277,237 @@
       </details>
       <details class="accordion-item">
         <summary>
+          <span class="accordion-title">Anscombe&rsquo;s Quartet</span>
+          <span class="meta">Due September 24th, 2026</span>
+        </summary>
+        <p><strong>D3 Tutorial: Anscombe&rsquo;s Quartet</strong></p>
+        <p><strong>Due:</strong> September 24th, 2026<br><strong>Assigned:</strong> September 18th, 2026</p>
+
+        <p><strong>Time estimate:</strong> 1&ndash;2 hours</p>
+
+        <p><strong>Submission:</strong> Upload to your GitHub account and submit URL to Courseworks.</p>
+
+        <p>In this tutorial, we will use D3.js to:</p>
+        <ul>
+          <li>Load Anscombe&rsquo;s Quartet CSV data.</li>
+          <li>Draw a scatter plot using one set of numbers.</li>
+          <li>Turn our drawing code into a reusable function.</li>
+          <li>Use that function to draw all four datasets.</li>
+        </ul>
+
+        <p><strong>1. Set up your files</strong></p>
+        <p>Create a folder called:</p>
+        <p><code>anscombes-quartet</code></p>
+        <p>Inside the folder, create:</p>
+        <p><code>index.html</code><br><code>script.js</code></p>
+        <p>You can use Visual Studio Code + Live Server to work on the project.</p>
+
+        <p><strong>2. Add D3 to your HTML</strong></p>
+        <p>Open <code>index.html</code> and add:</p>
+        <pre class="code-block">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Anscombe's Quartet&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;div id="chart"&gt;the chart will go here&lt;/div&gt;
+
+  &lt;script src="https://d3js.org/d3.v7.min.js"&gt;&lt;/script&gt;
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        <p>The first script loads D3. The second loads the JavaScript that we will write.</p>
+
+        <p><strong>3. Get the data</strong></p>
+        <p>Anscombe&rsquo;s Quartet contains four datasets. Each dataset has an x and y variable. Download <code>anscombe.csv</code> and put it in the same folder.</p>
+
+        <p><strong>4. Load the data</strong></p>
+        <p>Open <code>script.js</code>. Start by loading the CSV:</p>
+        <pre class="code-block">d3.csv("anscombe.csv").then(function(data) {
+
+  console.log(data); //This prints out the data
+
+});</pre>
+        <p>Open your browser&rsquo;s developer console. You should see the data printed there.</p>
+        <p><strong>Important:</strong> CSV data is loaded as text. We need to convert x and y into numbers. Change your code to:</p>
+        <pre class="code-block">d3.csv("anscombe.csv").then(function(data) {
+
+  data.forEach(function(d) {
+    d.x = +d.x;
+    d.y = +d.y;
+  });
+
+  console.log(data);
+
+});</pre>
+        <p>The <code>+</code> converts a value such as <code>"10"</code> into the number <code>10</code>.</p>
+
+        <p><strong>5. Make an SVG</strong></p>
+        <p>Inside the <code>then</code> function, create an SVG:</p>
+        <pre class="code-block">d3.csv("anscombe.csv").then(function(data) {
+
+  data.forEach(function(d) {
+    d.x = +d.x;
+    d.y = +d.y;
+  });
+
+  const width = 500;
+  const height = 500;
+
+  const svg = d3.select("#chart")
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+});</pre>
+        <p>We now have a blank 500 &times; 500 SVG.</p>
+
+        <p><strong>6. Create scales</strong></p>
+        <p>We need to convert our data values into positions on the screen. Create an x scale:</p>
+        <pre class="code-block">const xScale = d3.scaleLinear()
+  .domain([0, 20])
+  .range([50, 450]);</pre>
+        <p>And a y scale:</p>
+        <pre class="code-block">const yScale = d3.scaleLinear()
+  .domain([0, 12])
+  .range([450, 50]);</pre>
+        <p>Notice that the y range goes from 450 to 50. This is because SVG&rsquo;s y-coordinate starts at the top of the screen.</p>
+
+        <p><strong>7. Draw the first dataset</strong></p>
+        <p>Let&rsquo;s start with Dataset I. Filter the data:</p>
+        <pre class="code-block">const dataset1 = data.filter(function(d) {
+  return d.dataset === "I";
+});</pre>
+        <p>Now use D3 to create a circle for every observation:</p>
+        <pre class="code-block">svg.selectAll("circle")
+  .data(dataset1)
+  .join("circle")
+  .attr("cx", function(d) {
+    return xScale(d.x);
+  })
+  .attr("cy", function(d) {
+    return yScale(d.y);
+  })
+  .attr("r", 5);</pre>
+        <p>You should now see a scatter plot.</p>
+
+        <p><strong>8. Add axes</strong></p>
+        <p>Create the axes:</p>
+        <pre class="code-block">const xAxis = d3.axisBottom(xScale);
+const yAxis = d3.axisLeft(yScale);</pre>
+        <p>Add them to the SVG:</p>
+        <pre class="code-block">svg.append("g")
+  .attr("transform", "translate(0, 450)")
+  .call(xAxis);
+
+svg.append("g")
+  .attr("transform", "translate(50, 0)")
+  .call(yAxis);</pre>
+        <p>Now your scatter plot should have axes.</p>
+
+        <p><strong>9. Put the drawing code into a function</strong></p>
+        <p>Right now, our code only draws Dataset I. But the four datasets have exactly the same structure. Instead of writing the same code four times, we can create a function. Create:</p>
+        <pre class="code-block">function drawScatterplot(dataset) {
+
+  // drawing code goes here
+
+}</pre>
+        <p>Move the circle-drawing code into the function:</p>
+        <pre class="code-block">function drawScatterplot(dataset) {
+
+  svg.selectAll("circle")
+    .data(dataset)
+    .join("circle")
+    .attr("cx", function(d) {
+      return xScale(d.x);
+    })
+    .attr("cy", function(d) {
+      return yScale(d.y);
+    })
+    .attr("r", 5);
+
+}</pre>
+        <p>Now we can call the function:</p>
+        <pre class="code-block">drawScatterplot(dataset1);</pre>
+
+        <p><strong>10. Draw the other datasets</strong></p>
+        <p>Create the other three datasets:</p>
+        <pre class="code-block">const dataset2 = data.filter(function(d) {
+  return d.dataset === "II";
+});
+
+const dataset3 = data.filter(function(d) {
+  return d.dataset === "III";
+});
+
+const dataset4 = data.filter(function(d) {
+  return d.dataset === "IV";
+});</pre>
+        <p>Now we could call our function for each dataset:</p>
+        <pre class="code-block">drawScatterplot(dataset1);
+drawScatterplot(dataset2);
+drawScatterplot(dataset3);
+drawScatterplot(dataset4);</pre>
+        <p>However, there is one problem: all four datasets are being drawn into the same SVG. Instead, let&rsquo;s create a separate SVG for each dataset.</p>
+
+        <p><strong>11. Make the function create the entire chart</strong></p>
+        <p>Move the SVG creation into the function:</p>
+        <pre class="code-block">function drawScatterplot(dataset) {
+
+  const width = 500;
+  const height = 500;
+
+  const svg = d3.select("#chart")
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+  const xScale = d3.scaleLinear()
+    .domain([0, 20])
+    .range([50, 450]);
+
+  const yScale = d3.scaleLinear()
+    .domain([0, 12])
+    .range([450, 50]);
+
+  svg.selectAll("circle")
+    .data(dataset)
+    .join("circle")
+    .attr("cx", function(d) {
+      return xScale(d.x);
+    })
+    .attr("cy", function(d) {
+      return yScale(d.y);
+    })
+    .attr("r", 5);
+
+  svg.append("g")
+    .attr("transform", "translate(0, 450)")
+    .call(d3.axisBottom(xScale));
+
+  svg.append("g")
+    .attr("transform", "translate(50, 0)")
+    .call(d3.axisLeft(yScale));
+}</pre>
+        <p>Now the function takes a dataset and creates a complete scatter plot.</p>
+
+        <p><strong>12. Call the function four times</strong></p>
+        <p>At the bottom of your <code>d3.csv()</code> function, call:</p>
+        <pre class="code-block">drawScatterplot(dataset1);
+drawScatterplot(dataset2);
+drawScatterplot(dataset3);
+drawScatterplot(dataset4);</pre>
+        <p>You should now have four scatter plots. The important idea is that we wrote the drawing code once and reused it four times.</p>
+
+        <p><strong>Extra credit</strong></p>
+        <p>Make each chart a different color without redrawing, by passing a color variable into the function and using it for the circle fill.</p>
+      </details>
+      <details class="accordion-item">
+        <summary>
           <span class="accordion-title">Visual reverse-engineering assignment</span>
           <span class="meta">Due October 1st, 2026</span>
         </summary>
@@ -348,7 +613,7 @@
       </details>
       <details class="accordion-item">
         <summary>
-          <span class="accordion-title">Data discovery 1</span>
+          <span class="accordion-title">Data discovery</span>
           <span class="meta">Due October 8th, 2026</span>
         </summary>
         <p><strong>Due:</strong> October 8th, 2026<br><strong>Assigned:</strong> October 2nd, 2026</p>
@@ -370,14 +635,16 @@
       </details>
       <details class="accordion-item">
         <summary>
-          <span class="accordion-title">Data discovery 2</span>
+          <span class="accordion-title">Data exploration</span>
           <span class="meta">Due October 15th, 2026</span>
         </summary>
         <p><strong>Due:</strong> October 15th, 2026<br><strong>Assigned:</strong> October 9th, 2026</p>
 
-        <p><strong>Goal:</strong> Find a publicly available dataset that interests you and explore what you could do with it. Explore a dataset, learn what it contains, identify interesting patterns or questions, and propose possible ways you could use it for a data visualization.</p>
+        <p><strong>Time estimate:</strong> 2&ndash;3 hours</p>
 
-        <p><strong>Submission:</strong> Submit a document with data source, observations, and sketches to Courseworks.</p>
+        <p><strong>Submission:</strong> Upload working chart and a readme document answering questions in steps 2&ndash;4 to GitHub, submit URL to Courseworks.</p>
+
+        <p><strong>Goal:</strong> Find a publicly available dataset that interests you and explore what you could do with it. Explore a dataset, learn what it contains, identify interesting patterns or questions, sketch out some ideas, then make your first chart with interactivity.</p>
 
         <p><strong>Steps</strong></p>
 
@@ -451,6 +718,16 @@
           <li>What would it show or do?</li>
           <li>Who will find it useful or interesting?</li>
           <li>Why is this important?</li>
+        </ul>
+
+        <p><strong>Step 6: Make a chart</strong></p>
+        <p>Use what you already know of D3 and graphical forms, create 1 chart based on the data. There is no need to include the entirety of the data set, carefully choose your scope.</p>
+        <p>Your chart should include:</p>
+        <ul>
+          <li>Data source citing</li>
+          <li>Title and subtitle</li>
+          <li>Axis and labels</li>
+          <li>When helpful, additional information revealed by interactivity.</li>
         </ul>
       </details>
       <details class="accordion-item">
