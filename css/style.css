@@ -10,7 +10,7 @@
   --blue: #1436dc;
   --sans: "Open Sans", Arial, Helvetica, sans-serif;
   --mono: "Open Sans", Arial, Helvetica, sans-serif;
-  --max-width: 980px;
+  --max-width: 1200px;
 }
 
 * {
@@ -292,6 +292,16 @@ tr:last-child td {
 
 .accordion-item .card-list li {
   margin-bottom: 0;
+}
+
+.student-work .card-list {
+  padding-left: 1.8rem;
+  margin-bottom: 1.25rem;
+}
+
+.student-work .card p.meta {
+  padding-left: 0;
+  margin: 0;
 }
 
 .accordion-item table {
