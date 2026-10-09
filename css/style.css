@@ -542,3 +542,7 @@ footer {
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
+
+.accordion-item.sub-item {
+  margin-left: 1.8rem;
+}
